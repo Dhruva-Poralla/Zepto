@@ -23,8 +23,8 @@ function App() {
         const location = await axios.get(url);
         const extractAdress = location.data.address;
         setLocation(extractAdress);
-        setDropdown(!openDropdown)
-        console.log(extractAdress);
+        setDropdown(false);
+        // console.log(extractAdress);
       }
       catch (error)
       {
