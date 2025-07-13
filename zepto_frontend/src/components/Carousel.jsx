@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import Category from "./Category";
 
 
 
@@ -35,7 +36,7 @@ export default function Carousel() {
             padding: "2px",
             left: "50px",
           }}
-          onMouseOver="this.style.backgroundColor='#555'"
+          
         />
       </div>
     );
@@ -113,6 +114,7 @@ export default function Carousel() {
         })}
        
       </Slider>
+      <Category/>
     </div>
   );
 }

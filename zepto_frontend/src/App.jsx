@@ -9,6 +9,7 @@ import Cart from './pages/Cart'
 import Navbar from './components/Navbar'
 import { useEffect, useState } from 'react'
 import axios from 'axios';
+import Footer from './components/Footer'
 
 function App() {
 
@@ -48,6 +49,7 @@ function App() {
       <Route path='/cart' element={<Cart/>} />
 
     </Routes>
+    <Footer/>
     </BrowserRouter>
   )
 }

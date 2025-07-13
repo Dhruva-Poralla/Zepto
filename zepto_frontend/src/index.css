@@ -11,3 +11,10 @@
     width: 4opx;
     margin: 1px;
 }
+
+input{
+    background-color: #ffffff;
+    accent-color: red;
+    border: 1px solid #ccc;
+    color:#333
+}
