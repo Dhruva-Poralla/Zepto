@@ -5,10 +5,10 @@ import MidBanner from "../components/MidBanner";
 
 export default function Home() {
   return (
-   <>
+   <div className="overflow-x-hidden">
    <Carousel/>
    <MidBanner/>
    <Features/>
-   </>
+   </div>
   )
 }

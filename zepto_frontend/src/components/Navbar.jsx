@@ -10,15 +10,21 @@ import {
 } from "@clerk/clerk-react";
 import { useState } from "react";
 import { CgClose } from "react-icons/cg";
+import { useCart } from "../context/CartContext";
+import { HiMenuAlt1, HiMenuAlt3 } from 'react-icons/hi'
+import ResponsiveMenu from "./ResponsiveMenu";
+
 
 export default function Navbar({ location, getlocation, openDropdown, setDropdown }) {
   
+  const {cartItem} = useCart();
+  const [openNav,setOpenNav]= useState(false)
 
   const toggleDropdown = () => {
     setDropdown(!openDropdown);
   };
   return (
-    <div className="bg-white py-3 shadow-2xl">
+    <div className="bg-white py-3 shadow-2xl px-4 md:px-0">
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         {/* logo section */}
 
@@ -28,7 +34,7 @@ export default function Navbar({ location, getlocation, openDropdown, setDropdow
               <span className="text-red-500 font-serif">Z</span>epto
             </h1>
           </Link>
-          <div className="flex gap-1 text-gray-700 cursor-pointer items-center">
+          <div className="md:flex gap-1 text-gray-700 cursor-pointer items-center hidden">
             <MapPin className="text-red-500" />
             <span className="font-semibold">
               {location ? (
@@ -65,7 +71,7 @@ export default function Navbar({ location, getlocation, openDropdown, setDropdow
 
         {/* menu section */}
         <nav className="flex gap-7 items-center">
-          <ul className="flex list-none gap-7 text-xl font-semibold items-center">
+          <ul className="md:flex list-none gap-7 text-xl font-semibold items-center hidden">
             <NavLink
               to={"/"}
               className={({ isActive }) =>
@@ -118,10 +124,10 @@ export default function Navbar({ location, getlocation, openDropdown, setDropdow
           <Link to="/cart" className="relative">
             <IoCartOutline className="h-7 w-7" />
             <span className="bg-red-500 px-2 rounded-full absolute -top-3 -right-3 text-white">
-              0
+              {cartItem?.length}
             </span>
           </Link>
-          <div>
+          <div className="hidden md:block">
             <SignedOut>
               <SignInButton className="bg-red-500 rounded-md cursor-pointer px-3 py-1 text-white" />
             </SignedOut>
@@ -129,8 +135,14 @@ export default function Navbar({ location, getlocation, openDropdown, setDropdow
               <UserButton />
             </SignedIn>
           </div>
+          {
+             openNav ? <HiMenuAlt3 onClick={()=>setOpenNav(false)} className='h-7 w-7 md:hidden'/>:<HiMenuAlt1 
+                        onClick={()=>setOpenNav(true)}
+                        className='h-7 w-7 md:hidden'/>
+          }
         </nav>
       </div>
+      <ResponsiveMenu openNav={openNav} setOpenNav={setOpenNav}/>
     </div>
   );
 }

@@ -8,7 +8,7 @@ const features = [
     {icon: Clock, text: '24/7 Support', subtext: 'Dedicated customer service'},
 ]
 const Features = () => {
-
+ 
   return (
     <div className='bg-gray-100 py-8 px-4 sm:px-6 lg:px-8'>
       <div className='max-w-7xl mx-auto'>
